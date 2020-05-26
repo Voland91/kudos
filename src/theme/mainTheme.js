@@ -1,0 +1,17 @@
+export const theme = {
+  black: '#333',
+  gold: '#A8996F',
+  gray: '#707070',
+  white: '#FFF',
+  grayborder: '#EEE',
+  darkgray: '#616161',
+  regular: 400,
+  semibold: 500,
+  bold: 700,
+  xsmall: '12px',
+  small: '14px',
+  medium: '16px',
+  large: '24px',
+  rounded: '6px',
+  border: '1px solid',
+};
