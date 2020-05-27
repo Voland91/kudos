@@ -16,6 +16,7 @@ const Icon = styled.img`
       height: 100px;
       width: 124px;
       padding: 0;
+      cursor: default;
     `};
 
   ${props =>

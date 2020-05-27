@@ -1,12 +1,14 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/atoms/Icon';
 import Text from 'components/atoms/Text';
 import icon from 'assets/icons/city-solid.svg';
-import hearth from 'assets/icons/heart-solid.svg';
+import hearticon from 'assets/icons/heart-solid.svg';
 import comment from 'assets/icons/comment-alt-solid.svg';
 import dots from 'assets/icons/ellipsis-v-solid.svg';
+import { connect } from 'react-redux';
+import { addHeart } from '../../actions/addAction';
 
 const StyledBadgeWrapper = styled.div`
   display: flex;
@@ -30,15 +32,16 @@ const StyledRightWrapper = styled.div`
   margin-right: 17px;
 `;
 
-const PostNavigation = () => (
+// eslint-disable-next-line no-shadow
+const PostNavigation = ({ id, heart, addHeart }) => (
   <StyledBadgeWrapper>
     <StyledLeftWrapper>
       <Icon src={icon} />
       <Text link>Marketing</Text>
     </StyledLeftWrapper>
     <StyledRightWrapper>
-      <Icon small src={hearth} />
-      <Text counter>4</Text>
+      <Icon small src={hearticon} onClick={() => addHeart(id)} />
+      <Text counter>{heart}</Text>
       <Icon small src={comment} />
       <Text counter>0</Text>
     </StyledRightWrapper>
@@ -46,8 +49,13 @@ const PostNavigation = () => (
   </StyledBadgeWrapper>
 );
 
-// Content.propTypes = {
-//   description: PropTypes.string.isRequired,
-// };
+PostNavigation.propTypes = {
+  id: PropTypes.number.isRequired,
+  heart: PropTypes.number.isRequired,
+  addHeart: PropTypes.func.isRequired,
+};
 
-export default PostNavigation;
+export default connect(
+  null,
+  { addHeart },
+)(PostNavigation);

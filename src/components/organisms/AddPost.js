@@ -16,6 +16,10 @@ const StyledWrapper = styled.button`
   border: ${({ theme }) => theme.border} ${({ theme }) => theme.grayborder};
   border-radius: ${({ theme }) => theme.rounded};
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.gold};
+  }
 `;
 
 const AddPost = () => (

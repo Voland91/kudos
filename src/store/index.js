@@ -1,11 +1,15 @@
-import { createStore } from 'redux';
-import kudos from 'reducers';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import rootReducer from 'reducers';
 
-/* eslint-disable no-underscore-dangle */
+const initialState = {};
+const middleware = [thunk];
+
 const store = createStore(
-  kudos /* preloadState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  rootReducer,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
-/* eslint-enable */
 
 export default store;

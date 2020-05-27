@@ -20,12 +20,12 @@ const StyledWrapper = styled.div`
   border-radius: ${({ theme }) => theme.rounded};
 `;
 
-const Post = ({ name, date, avatar, description }) => (
+const Post = ({ name, date, avatar, description, heart, id }) => (
   <StyledWrapper>
     <Header name={name} date={date} avatar={avatar} />
     <Text>{description}</Text>
     <Badge />
-    <PostNavigation />
+    <PostNavigation heart={heart} id={id} />
     <Comment avatar={avatar} />
   </StyledWrapper>
 );
@@ -35,6 +35,8 @@ Post.propTypes = {
   date: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  heart: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Post;

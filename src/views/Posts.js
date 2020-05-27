@@ -31,7 +31,7 @@ const Posts = ({ posts }) => (
     <>
       <StyledNotesWrapper>
         <AddPost />
-        {posts.map(({ name, date, id, avatar, description }) => (
+        {posts.map(({ name, date, id, avatar, description, heart }) => (
           <Post
             avatar={avatar}
             name={name}
@@ -39,6 +39,7 @@ const Posts = ({ posts }) => (
             description={description}
             key={id}
             id={id}
+            heart={heart}
           />
         ))}
       </StyledNotesWrapper>
@@ -49,18 +50,22 @@ const Posts = ({ posts }) => (
 Posts.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       date: PropTypes.string.isRequired,
       avatar: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
+      heart: PropTypes.number.isRequired,
     }),
   ),
 };
 
 Posts.defaultProps = {
-  posts: [],
+  posts: {},
 };
 
-const mapStateToProps = ({ posts }) => ({ posts });
+const mapStateToProps = state => ({
+  posts: state.postsState,
+});
 
 export default connect(mapStateToProps)(Posts);

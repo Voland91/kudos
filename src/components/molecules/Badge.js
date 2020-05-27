@@ -15,6 +15,9 @@ const StyledBadgeWrapper = styled.div`
   border-radius: ${({ theme }) => theme.rounded};
   padding-left: 29px;
   align-items: center;
+  &:hover {
+    border: ${({ theme }) => theme.border} ${({ theme }) => theme.gold};
+  }
 `;
 
 const StyledDescriptionWrapper = styled.div`
