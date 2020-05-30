@@ -3,7 +3,7 @@ const initialState = [
     id: 1,
     name: 'Ken Hunt',
     img: 'https://randomuser.me/api/portraits/men/73.jpg',
-    isActive: true,
+    isActive: false,
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const initialState = [
     id: 7,
     name: 'Ron Roberts',
     img: 'https://randomuser.me/api/portraits/men/68.jpg',
-    isActive: false,
+    isActive: true,
   },
 ];
 

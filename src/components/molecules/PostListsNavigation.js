@@ -33,14 +33,14 @@ const StyledRightWrapper = styled.div`
 `;
 
 // eslint-disable-next-line no-shadow
-const PostNavigation = ({ id, heart, addHeart }) => (
+const PostNavigation = ({ postId, heart, addHeart }) => (
   <StyledBadgeWrapper>
     <StyledLeftWrapper>
       <Icon src={icon} />
       <Text link>Marketing</Text>
     </StyledLeftWrapper>
     <StyledRightWrapper>
-      <Icon small src={hearticon} onClick={() => addHeart(id)} />
+      <Icon small src={hearticon} onClick={() => addHeart(postId)} />
       <Text counter>{heart}</Text>
       <Icon small src={comment} />
       <Text counter>0</Text>
@@ -50,7 +50,7 @@ const PostNavigation = ({ id, heart, addHeart }) => (
 );
 
 PostNavigation.propTypes = {
-  id: PropTypes.number.isRequired,
+  postId: PropTypes.number.isRequired,
   heart: PropTypes.number.isRequired,
   addHeart: PropTypes.func.isRequired,
 };

@@ -16,9 +16,10 @@ const StyledNotesWrapper = styled.div`
 const Posts = ({ posts, persons }) => (
   <MainTemplate>
     <StyledNotesWrapper>
-      <AddPost />
+      <AddPost persons={persons} />
       {posts.map(({ authorId, date, postId, description, heart }) => (
         <Post
+          persons={persons}
           name={persons[authorId].name}
           avatar={persons[authorId].img}
           date={date}

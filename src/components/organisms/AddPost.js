@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { border } from 'theme/mixins';
 import Avatar from 'components/atoms/Avatar';
@@ -22,14 +23,33 @@ const StyledWrapper = styled.button`
   }
 `;
 
-const AddPost = () => (
-  <Link to="/form">
-    <StyledWrapper>
-      <Avatar src="https://randomuser.me/api/portraits/men/7.jpg" />
-      <Text addPost>Kliknij, aby dodać post</Text>
-      <Icon addPost src={icon} />
-    </StyledWrapper>
-  </Link>
-);
+const AddPost = ({ persons }) => {
+  const activePerson = persons.find(person => person.isActive);
+
+  return (
+    <Link to="/form">
+      <StyledWrapper>
+        <Avatar src={activePerson.img} />
+        <Text addPost>Kliknij, aby dodać post</Text>
+        <Icon addPost src={icon} />
+      </StyledWrapper>
+    </Link>
+  );
+};
+
+AddPost.propTypes = {
+  persons: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      isActive: PropTypes.bool.isRequired,
+    }),
+  ),
+};
+
+AddPost.defaultProps = {
+  persons: {},
+};
 
 export default AddPost;
