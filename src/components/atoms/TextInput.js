@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { EditorState } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
+import createEmojiPlugin from 'draft-js-emoji-plugin';
 import styled from 'styled-components';
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin';
 import 'draft-js-mention-plugin/lib/plugin.css';
+import 'draft-js-emoji-plugin/lib/plugin.css';
 
 const StyledEditorWrapper = styled.div`
   background-color: transparent;
@@ -13,7 +15,7 @@ const StyledEditorWrapper = styled.div`
   color: ${({ theme }) => theme.gray};
   width: 100%;
   overflow: hidden;
-  height: 82px;
+  height: 65px;
   line-height: 1.2;
 `;
 
@@ -22,6 +24,7 @@ class TextInput extends React.Component {
     super(props);
 
     this.mentionPlugin = createMentionPlugin();
+    this.emojiPlugin = createEmojiPlugin();
   }
 
   state = {
@@ -44,18 +47,15 @@ class TextInput extends React.Component {
   render() {
     const { editorState, suggestions } = this.state;
     const { MentionSuggestions } = this.mentionPlugin;
-    const plugins = [this.mentionPlugin];
+    const { EmojiSuggestions } = this.emojiPlugin;
+    const plugins = [this.mentionPlugin, this.emojiPlugin];
 
     return (
       <>
         <StyledEditorWrapper>
-          <Editor
-            editorState={editorState}
-            onChange={this.onChange}
-            plugins={plugins}
-            placeholder="Tresć posta..."
-          />
+          <Editor editorState={editorState} onChange={this.onChange} plugins={plugins} />
           <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={suggestions} />
+          <EmojiSuggestions />
         </StyledEditorWrapper>
       </>
     );
