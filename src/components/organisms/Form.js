@@ -10,7 +10,7 @@ import FormChoseGroup from '../molecules/FormChoseGroup';
 const Form = ({ kudoses, persons }) => (
   <>
     <FormHeader />
-    <FormPost />
+    <FormPost persons={persons} />
     <Text form>Wybierz osobę, której przyznajesz kudos</Text>
     <FormChosePerson persons={persons} />
     <Text form>Wybierz kudos</Text>
