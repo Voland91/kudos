@@ -3,37 +3,43 @@ const initialState = [
     id: 1,
     title: 'Dziękuję Ci',
     description: 'Imię i nazwisko',
-    img: 'undraw_true_love_cy8x.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_true_love_cy8x.svg',
   },
   {
     id: 2,
     title: 'Gratulacje!',
     description: 'Imię i nazwisko',
-    img: 'assets/icons/undraw_super_thank_you_obwk.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_super_thank_you_obwk.svg',
   },
   {
     id: 3,
     title: 'Gracz zespołowy',
     description: 'Imię i nazwisko',
-    img: 'assets/icons/undraw_team_spirit_hrr4.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_team_spirit_hrr4.svg',
   },
   {
     id: 4,
     title: 'Pozytywny wpływ',
     description: 'Imię i nazwisko',
-    img: 'assets/icons/undraw_positive_attitude_xaae.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_positive_attitude_xaae.svg',
   },
   {
     id: 5,
     title: 'Świetny współpracownik',
     description: 'Imię i nazwisko',
-    img: 'assets/icons/undraw_real_time_collaboration_c62i.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_real_time_collaboration_c62i.svg',
   },
   {
     id: 6,
     title: 'Przechodzisz samego (samą) siebie',
     description: 'Imię i nazwisko',
-    img: 'assets/icons/undraw_teacher_35j2.svg',
+    img:
+      'https://raw.githubusercontent.com/Voland91/kudos/8ca96e90bc3c2f2b81c5f562243c198805f1ed8d/src/assets/icons/undraw_teacher_35j2.svg',
   },
 ];
 
