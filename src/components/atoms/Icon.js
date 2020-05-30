@@ -33,8 +33,6 @@ const Icon = styled.img`
     props.comment &&
     css`
       background-color: transparent;
-      height: 24px;
-      width: 24px;
       padding: 5px;
       border-radius: 0;
     `};
@@ -42,6 +40,21 @@ const Icon = styled.img`
   ${props =>
     props.addPost &&
     css`
+      background-color: transparent;
+    `};
+
+  ${props =>
+    props.form &&
+    css`
+      padding: 6px;
+    `};
+
+  ${props =>
+    props.smallkudos &&
+    css`
+      max-width: 75px;
+      width: auto;
+      height: auto;
       background-color: transparent;
     `};
 `;

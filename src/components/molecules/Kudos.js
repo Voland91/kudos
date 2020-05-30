@@ -1,6 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { border } from 'theme/mixins';
 import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
 import Text from 'components/atoms/Text';
@@ -9,15 +9,11 @@ import icon from 'assets/icons/undraw_real_time_collaboration_c62i.svg';
 const StyledBadgeWrapper = styled.div`
   display: flex;
   height: 193px;
-  width: 532px;
+  width: 100%;
   justify-content: space-between;
-  border: ${({ theme }) => theme.border} ${({ theme }) => theme.grayborder};
-  border-radius: ${({ theme }) => theme.rounded};
+  ${border};
   padding-left: 29px;
   align-items: center;
-  &:hover {
-    border: ${({ theme }) => theme.border} ${({ theme }) => theme.gold};
-  }
 `;
 
 const StyledDescriptionWrapper = styled.div`
@@ -28,7 +24,7 @@ const StyledDescriptionWrapper = styled.div`
   flex: 1;
 `;
 
-const Badge = () => (
+const Kudos = () => (
   <StyledBadgeWrapper>
     <Icon big src={icon} />
     <StyledDescriptionWrapper>
@@ -38,8 +34,4 @@ const Badge = () => (
   </StyledBadgeWrapper>
 );
 
-// Content.propTypes = {
-//   Text: PropTypes.string.isRequired,
-// };
-
-export default Badge;
+export default Kudos;

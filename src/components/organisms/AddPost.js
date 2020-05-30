@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { border } from 'theme/mixins';
 import Avatar from 'components/atoms/Avatar';
 import Text from 'components/atoms/Text';
 import Icon from 'components/atoms/Icon';
@@ -9,12 +11,10 @@ const StyledWrapper = styled.button`
   display: flex;
   padding: 16px;
   margin: 0;
-  width: 564px;
+  width: ${({ theme }) => theme.width};
   height: 56px;
   align-items: center;
-  background-color: ${({ theme }) => theme.white};
-  border: ${({ theme }) => theme.border} ${({ theme }) => theme.grayborder};
-  border-radius: ${({ theme }) => theme.rounded};
+  ${border};
   cursor: pointer;
 
   &:hover {
@@ -23,11 +23,13 @@ const StyledWrapper = styled.button`
 `;
 
 const AddPost = () => (
-  <StyledWrapper>
-    <Avatar src="https://randomuser.me/api/portraits/men/1.jpg" />
-    <Text addPost>Kliknij, aby dodać post</Text>
-    <Icon addPost src={icon} />
-  </StyledWrapper>
+  <Link to="/form">
+    <StyledWrapper>
+      <Avatar src="https://randomuser.me/api/portraits/men/7.jpg" />
+      <Text addPost>Kliknij, aby dodać post</Text>
+      <Icon addPost src={icon} />
+    </StyledWrapper>
+  </Link>
 );
 
 export default AddPost;

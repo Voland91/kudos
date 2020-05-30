@@ -22,7 +22,7 @@ const StyledDataWrapper = styled.div`
   justify-content: center;
 `;
 
-const Post = ({ name, date, avatar }) => (
+const Header = ({ name, date, avatar }) => (
   <StyledHeaderWrapper>
     <Avatar src={avatar} />
     <StyledDataWrapper>
@@ -33,10 +33,10 @@ const Post = ({ name, date, avatar }) => (
   </StyledHeaderWrapper>
 );
 
-Post.propTypes = {
+Header.propTypes = {
   name: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
 };
 
-export default Post;
+export default Header;

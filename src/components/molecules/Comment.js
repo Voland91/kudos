@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { border } from 'theme/mixins';
 import Icon from 'components/atoms/Icon';
 import Avatar from 'components/atoms/Avatar';
 import Input from 'components/atoms/Input';
@@ -21,9 +22,7 @@ const StyledRightWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   margin-left: 8px;
-  background-color: ${({ theme }) => theme.white};
-  border: ${({ theme }) => theme.border} ${({ theme }) => theme.grayborder};
-  border-radius: ${({ theme }) => theme.rounded};
+  ${border};
   width: 100%;
   height: 32px;
   padding: 6px 8px;

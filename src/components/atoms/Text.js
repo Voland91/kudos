@@ -26,10 +26,12 @@ const Text = styled.p`
   ${props =>
     props.counter &&
     css`
+      display: block;
+      width: 10px;
       color: ${({ theme }) => theme.gold};
       font-size: ${({ theme }) => theme.xsmall};
       font-weight: ${({ theme }) => theme.regular};
-      margin: 0 8px 0 5.45px;
+      margin: 0 8px 0 6px;
     `};
 
   ${props =>
@@ -40,6 +42,28 @@ const Text = styled.p`
       margin: 0 0 0 8px;
       text-align: left;
       width: 100%;
+    `};
+
+  ${props =>
+    props.form &&
+    css`
+      color: ${({ theme }) => theme.darkgray};
+      margin: 22px 0 8px 0;
+    `};
+
+  ${props =>
+    props.smallkudos &&
+    css`
+      color: ${({ theme }) => theme.darkgray};
+      font-size: ${({ theme }) => theme.small};
+      margin: 0;
+    `};
+
+  ${props =>
+    props.select &&
+    css`
+      color: ${({ theme }) => theme.darkgray};
+      margin: 0 0 0 8px;
     `};
 `;
 

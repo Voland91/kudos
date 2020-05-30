@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import { border } from 'theme/mixins';
 import Text from 'components/atoms/Text';
 import Header from 'components/molecules/Header';
-import Badge from 'components/molecules/Badge';
+import Kudos from 'components/molecules/Kudos';
 import Comment from 'components/molecules/Comment';
 import PostNavigation from 'components/molecules/PostNavigation';
 
@@ -13,19 +13,17 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   padding: 16px;
   margin: 13px 0;
-  width: 564px;
+  width: ${({ theme }) => theme.width};
   height: 513px;
-  background-color: ${({ theme }) => theme.white};
-  border: ${({ theme }) => theme.border} ${({ theme }) => theme.grayborder};
-  border-radius: ${({ theme }) => theme.rounded};
+  ${border};
 `;
 
-const Post = ({ name, date, avatar, description, heart, id }) => (
+const Post = ({ name, date, avatar, description, heart, postId }) => (
   <StyledWrapper>
     <Header name={name} date={date} avatar={avatar} />
     <Text>{description}</Text>
-    <Badge />
-    <PostNavigation heart={heart} id={id} />
+    <Kudos smallkudos />
+    <PostNavigation heart={heart} postId={postId} />
     <Comment avatar={avatar} />
   </StyledWrapper>
 );
@@ -36,7 +34,7 @@ Post.propTypes = {
   avatar: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   heart: PropTypes.number.isRequired,
-  id: PropTypes.number.isRequired,
+  postId: PropTypes.number.isRequired,
 };
 
 export default Post;

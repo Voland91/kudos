@@ -6,19 +6,6 @@ import Post from 'components/organisms/Post';
 import AddPost from 'components/organisms/AddPost';
 import MainTemplate from 'templates/MainTemplate';
 
-// const StyledLogoLink = styled.div`
-//   display: block;
-//   width: 150px;
-//   height: 60px;
-//   /* background-image: url(); */
-//   background-repeat: no-repeat;
-//   background-position: 50% 50%;
-//   background-size: 100%;
-//   border: none;
-//   margin-bottom: 50px;
-//   cursor: pointer;
-// `;
-
 const StyledNotesWrapper = styled.div`
   margin: 50px 0;
   display: flex;
@@ -26,46 +13,53 @@ const StyledNotesWrapper = styled.div`
   align-items: center;
 `;
 
-const Posts = ({ posts }) => (
+const Posts = ({ posts, persons }) => (
   <MainTemplate>
-    <>
-      <StyledNotesWrapper>
-        <AddPost />
-        {posts.map(({ name, date, id, avatar, description, heart }) => (
-          <Post
-            avatar={avatar}
-            name={name}
-            date={date}
-            description={description}
-            key={id}
-            id={id}
-            heart={heart}
-          />
-        ))}
-      </StyledNotesWrapper>
-    </>
+    <StyledNotesWrapper>
+      <AddPost />
+      {posts.map(({ authorId, date, postId, description, heart }) => (
+        <Post
+          name={persons[authorId].name}
+          avatar={persons[authorId].img}
+          date={date}
+          description={description}
+          key={postId}
+          postId={postId}
+          heart={heart}
+        />
+      ))}
+    </StyledNotesWrapper>
   </MainTemplate>
 );
 
 Posts.propTypes = {
   posts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
+      postId: PropTypes.number.isRequired,
+      authorId: PropTypes.number.isRequired,
       date: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       heart: PropTypes.number.isRequired,
+    }),
+  ),
+  persons: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      isActive: PropTypes.bool.isRequired,
     }),
   ),
 };
 
 Posts.defaultProps = {
   posts: {},
+  persons: {},
 };
 
 const mapStateToProps = state => ({
   posts: state.postsState,
+  persons: state.personsState,
 });
 
 export default connect(mapStateToProps)(Posts);
