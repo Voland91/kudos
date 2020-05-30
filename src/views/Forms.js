@@ -43,7 +43,7 @@ Forms.propTypes = {
   ),
   persons: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       isActive: PropTypes.bool.isRequired,
@@ -57,7 +57,7 @@ Forms.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  kudoses: state.kudosState,
+  kudoses: state.kudosesState,
   persons: state.personsState,
 });
 

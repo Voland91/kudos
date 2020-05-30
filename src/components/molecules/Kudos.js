@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { border } from 'theme/mixins';
 import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
 import Text from 'components/atoms/Text';
-import icon from 'assets/icons/undraw_real_time_collaboration_c62i.svg';
 
 const StyledBadgeWrapper = styled.div`
   display: flex;
@@ -24,14 +24,43 @@ const StyledDescriptionWrapper = styled.div`
   flex: 1;
 `;
 
-const Kudos = () => (
-  <StyledBadgeWrapper>
-    <Icon big src={icon} />
-    <StyledDescriptionWrapper>
-      <Text big>Świetny współpracownik</Text>
-      <Title big>Barbara Klimowicz</Title>
-    </StyledDescriptionWrapper>
-  </StyledBadgeWrapper>
-);
+const Kudos = ({ kudos, persons, kudoses }) => {
+  const badge = kudoses.find(item => item.id === kudos.kudosId);
+  const person = persons.find(item => item.id === kudos.personId);
+
+  return (
+    <StyledBadgeWrapper>
+      <Icon big src={badge.img} />
+      <StyledDescriptionWrapper>
+        <Text big>{badge.title}</Text>
+        <Title big>{person.name}</Title>
+      </StyledDescriptionWrapper>
+    </StyledBadgeWrapper>
+  );
+};
+
+Kudos.propTypes = {
+  kudos: PropTypes.objectOf(PropTypes.number).isRequired,
+  persons: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+      isActive: PropTypes.bool.isRequired,
+    }),
+  ),
+  kudoses: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+Kudos.defaultProps = {
+  persons: {},
+  kudoses: {},
+};
 
 export default Kudos;

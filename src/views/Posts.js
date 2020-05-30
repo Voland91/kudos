@@ -13,25 +13,30 @@ const StyledNotesWrapper = styled.div`
   align-items: center;
 `;
 
-const Posts = ({ posts, persons }) => (
-  <MainTemplate>
-    <StyledNotesWrapper>
-      <AddPost persons={persons} />
-      {posts.map(({ authorId, date, postId, description, heart }) => (
-        <Post
-          persons={persons}
-          name={persons[authorId].name}
-          avatar={persons[authorId].img}
-          date={date}
-          description={description}
-          key={postId}
-          postId={postId}
-          heart={heart}
-        />
-      ))}
-    </StyledNotesWrapper>
-  </MainTemplate>
-);
+const Posts = ({ posts, persons, kudoses }) => {
+  return (
+    <MainTemplate>
+      <StyledNotesWrapper>
+        <AddPost persons={persons} />
+        {posts.map(({ authorId, date, postId, description, heart, kudos }) => (
+          <Post
+            persons={persons}
+            name={persons[authorId].name}
+            avatar={persons[authorId].img}
+            date={date}
+            description={description}
+            key={postId}
+            postId={postId}
+            heart={heart}
+            kudos={kudos}
+            kudoses={kudoses}
+            posts={posts}
+          />
+        ))}
+      </StyledNotesWrapper>
+    </MainTemplate>
+  );
+};
 
 Posts.propTypes = {
   posts: PropTypes.arrayOf(
@@ -41,6 +46,7 @@ Posts.propTypes = {
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       heart: PropTypes.number.isRequired,
+      kudos: PropTypes.objectOf(PropTypes.number),
     }),
   ),
   persons: PropTypes.arrayOf(
@@ -51,16 +57,25 @@ Posts.propTypes = {
       isActive: PropTypes.bool.isRequired,
     }),
   ),
+  kudoses: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 Posts.defaultProps = {
   posts: {},
   persons: {},
+  kudoses: {},
 };
 
 const mapStateToProps = state => ({
   posts: state.postsState,
   persons: state.personsState,
+  kudoses: state.kudosesState,
 });
 
 export default connect(mapStateToProps)(Posts);

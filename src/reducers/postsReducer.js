@@ -8,6 +8,10 @@ const initialState = [
     description:
       'Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.',
     heart: 0,
+    kudos: {
+      kudosId: 3,
+      personId: 2,
+    },
   },
   {
     postId: 2,
@@ -16,6 +20,10 @@ const initialState = [
     description:
       'Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.',
     heart: 0,
+    kudos: {
+      kudosId: 1,
+      personId: 5,
+    },
   },
   {
     postId: 3,
@@ -24,6 +32,10 @@ const initialState = [
     description:
       'Wielkie dzięki @Barbara Klimowicz za współpracę przy ostatnim projekcie. Dzięki twojej pomocy poradziłam sobie z badaniami i analizą! Mam nadzieję że jeszcze wiele takich projektów przed nami.',
     heart: 0,
+    kudos: {
+      kudosId: 5,
+      personId: 4,
+    },
   },
 ];
 

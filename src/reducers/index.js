@@ -5,6 +5,6 @@ import personsReducer from './personsReducer';
 
 export default combineReducers({
   postsState: postsReducer,
-  kudosState: kudosReducer,
+  kudosesState: kudosReducer,
   personsState: personsReducer,
 });
