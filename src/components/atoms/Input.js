@@ -12,7 +12,7 @@ const Input = styled.input`
   flex: 1;
 
   ${props =>
-    props.form &&
+    props.formlook &&
     css`
       width: 100%;
       font-weight: ${({ theme }) => theme.regular};

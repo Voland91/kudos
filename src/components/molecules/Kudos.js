@@ -45,7 +45,6 @@ Kudos.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),
   ),

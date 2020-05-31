@@ -14,15 +14,17 @@ const StyledNotesWrapper = styled.div`
 `;
 
 const Posts = ({ posts, persons, kudoses }) => {
+  const sortedPosts = posts.sort((a, b) => parseFloat(b.postId) - parseFloat(a.postId));
+
   return (
     <MainTemplate>
       <StyledNotesWrapper>
         <AddPost persons={persons} />
-        {posts.map(({ authorId, date, postId, description, heart, kudos }) => (
+        {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, departamentId }) => (
           <Post
             persons={persons}
             name={persons[authorId].name}
-            avatar={persons[authorId].img}
+            avatar={persons[authorId].avatar}
             date={date}
             description={description}
             key={postId}
@@ -31,6 +33,7 @@ const Posts = ({ posts, persons, kudoses }) => {
             kudos={kudos}
             kudoses={kudoses}
             posts={posts}
+            departamentId={departamentId}
           />
         ))}
       </StyledNotesWrapper>
@@ -46,6 +49,7 @@ Posts.propTypes = {
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       heart: PropTypes.number.isRequired,
+      departamentId: PropTypes.number.isRequired,
       kudos: PropTypes.objectOf(PropTypes.number),
     }),
   ),
@@ -53,7 +57,7 @@ Posts.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),
   ),

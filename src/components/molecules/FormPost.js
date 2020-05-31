@@ -12,20 +12,26 @@ const StyledEditorWrapper = styled.div`
   padding: 6px 8px;
 `;
 
-const FormPost = ({ persons }) => (
-  <>
-    <Text form>Treść posta nad kudosem</Text>
-    <StyledEditorWrapper>
-      <TextInput persons={persons} />
-    </StyledEditorWrapper>
-  </>
-);
+const FormPost = ({ persons }) => {
+  // const postText = e => {
+  //   console.log(e.target);
+  // };
+
+  return (
+    <>
+      <Text formlook>Treść posta nad kudosem</Text>
+      <StyledEditorWrapper>
+        <TextInput persons={persons} />
+      </StyledEditorWrapper>
+    </>
+  );
+};
 
 FormPost.propTypes = {
   persons: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),

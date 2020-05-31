@@ -15,9 +15,9 @@ const StyledHeaderWrapper = styled.div`
 const FormHeader = () => (
   <StyledHeaderWrapper>
     <Icon addPost src={icon} />
-    <Title form>utwórz kudos</Title>
+    <Title formlook>utwórz kudos</Title>
     <Link to="/">
-      <Icon form src={close} />
+      <Icon formlook src={close} />
     </Link>
   </StyledHeaderWrapper>
 );

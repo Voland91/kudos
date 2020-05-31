@@ -44,7 +44,7 @@ const Icon = styled.img`
     `};
 
   ${props =>
-    props.form &&
+    props.formlook &&
     css`
       padding: 6px;
     `};

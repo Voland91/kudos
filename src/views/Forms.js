@@ -44,7 +44,7 @@ Forms.propTypes = {
   persons: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),

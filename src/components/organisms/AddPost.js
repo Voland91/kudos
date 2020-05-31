@@ -29,7 +29,7 @@ const AddPost = ({ persons }) => {
   return (
     <Link to="/form">
       <StyledWrapper>
-        <Avatar src={activePerson.img} />
+        <Avatar src={activePerson.avatar} />
         <Text addPost>Kliknij, aby dodać post</Text>
         <Icon addPost src={icon} />
       </StyledWrapper>
@@ -42,7 +42,7 @@ AddPost.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),
   ),

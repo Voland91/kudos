@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/atoms/Icon';
 import Text from 'components/atoms/Text';
-import icon from 'assets/icons/city-solid.svg';
 import hearticon from 'assets/icons/heart-solid.svg';
 import comment from 'assets/icons/comment-alt-solid.svg';
 import dots from 'assets/icons/ellipsis-v-solid.svg';
@@ -33,29 +32,51 @@ const StyledRightWrapper = styled.div`
 `;
 
 // eslint-disable-next-line no-shadow
-const PostNavigation = ({ postId, heart, addHeart }) => (
-  <StyledBadgeWrapper>
-    <StyledLeftWrapper>
-      <Icon src={icon} />
-      <Text link>Marketing</Text>
-    </StyledLeftWrapper>
-    <StyledRightWrapper>
-      <Icon small src={hearticon} onClick={() => addHeart(postId)} />
-      <Text counter>{heart}</Text>
-      <Icon small src={comment} />
-      <Text counter>0</Text>
-    </StyledRightWrapper>
-    <Icon small src={dots} />
-  </StyledBadgeWrapper>
-);
+const PostNavigation = ({ postId, heart, addHeart, departamentId, departaments }) => {
+  // const dep = departaments.find(item => item.id === departaments.departamentId);
+
+  const dep = departaments.find(item => item.id === departamentId);
+
+  return (
+    <StyledBadgeWrapper>
+      <StyledLeftWrapper>
+        <Icon src={dep.img} />
+        <Text link>{dep.name}</Text>
+      </StyledLeftWrapper>
+      <StyledRightWrapper>
+        <Icon small src={hearticon} onClick={() => addHeart(postId)} />
+        <Text counter>{heart}</Text>
+        <Icon small src={comment} />
+        <Text counter>0</Text>
+      </StyledRightWrapper>
+      <Icon small src={dots} />
+    </StyledBadgeWrapper>
+  );
+};
 
 PostNavigation.propTypes = {
   postId: PropTypes.number.isRequired,
   heart: PropTypes.number.isRequired,
   addHeart: PropTypes.func.isRequired,
+  departamentId: PropTypes.number.isRequired,
+  departaments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
+PostNavigation.defaultProps = {
+  departaments: {},
+};
+
+const mapStateToProps = state => ({
+  departaments: state.departamentsState,
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { addHeart },
 )(PostNavigation);

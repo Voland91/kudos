@@ -12,7 +12,7 @@ const Title = styled.h2`
     `};
 
   ${props =>
-    props.form &&
+    props.formlook &&
     css`
       flex: 1;
       margin-left: 18px;

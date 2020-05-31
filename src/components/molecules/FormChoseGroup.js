@@ -1,17 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Text from 'components/atoms/Text';
 import Select from 'components/atoms/Select';
-import Button from 'components/atoms/Button';
 import Icon from 'components/atoms/Icon';
-import iconCity from 'assets/icons/city-purple.svg';
-import iconDepartment from 'assets/icons/sticky-note_purple.svg';
+import { connect } from 'react-redux';
 
-const StyledKudosWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-`;
 const SelectWrapper = styled.div`
   display: flex;
   height: 24px;
@@ -55,51 +49,43 @@ const customStyles = {
   }),
 };
 
-// options for Select
-const options = [
-  {
-    value: 'Białystok',
-    label: (
-      <SelectWrapper>
-        <Icon src={iconCity} />
-        <Text select>Białystok</Text>
-      </SelectWrapper>
-    ),
-  },
-  {
-    value: 'Marketing',
-    label: (
-      <SelectWrapper>
-        <Icon src={iconDepartment} />
-        <Text select>Marketing</Text>
-      </SelectWrapper>
-    ),
-  },
-  {
-    value: 'Warszawa',
-    label: (
-      <SelectWrapper>
-        <Icon src={iconCity} />
-        <Text select>Warszawa</Text>
-      </SelectWrapper>
-    ),
-  },
-  {
-    value: 'HR',
-    label: (
-      <SelectWrapper>
-        <Icon src={iconDepartment} />
-        <Text select>HR</Text>
-      </SelectWrapper>
-    ),
-  },
-];
+// options to Select
+const FormChoseGroup = ({ departaments }) => {
+  const options = departaments.map(item => {
+    return {
+      value: `${item.name}`,
+      label: (
+        <SelectWrapper>
+          <Icon src={item.img} />
+          <Text select>{item.name}</Text>
+        </SelectWrapper>
+      ),
+      id: item.id,
+    };
+  });
 
-const FormChoseGroup = () => (
-  <StyledKudosWrapper>
-    <Select options={options} placeholder="" styles={customStyles} />
-    <Button>Opublikuj</Button>
-  </StyledKudosWrapper>
-);
+  return <Select options={options} placeholder="" styles={customStyles} />;
+};
 
-export default FormChoseGroup;
+const mapStateToProps = state => ({
+  departaments: state.departamentsState,
+});
+
+FormChoseGroup.propTypes = {
+  departaments: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      img: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+FormChoseGroup.defaultProps = {
+  departaments: {},
+};
+
+export default connect(
+  mapStateToProps,
+  null,
+)(FormChoseGroup);

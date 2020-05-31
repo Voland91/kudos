@@ -74,6 +74,12 @@ class TextInput extends React.Component {
     });
   };
 
+  // postText = () => {
+  //   // eslint-disable-next-line react/destructuring-assignment
+  //   const contentState = this.state.editorState.getCurrentContent();
+  //   const raw = convertToRaw(contentState);
+  // };
+
   render() {
     const { editorState, suggestions, readOnly } = this.state;
     const { MentionSuggestions } = this.mentionPlugin;
@@ -96,6 +102,7 @@ class TextInput extends React.Component {
             onChange={this.onChange}
             plugins={plugins}
             readOnly={readOnly}
+            postText={this.postText}
           />
           <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={suggestions} />
           <EmojiSuggestions />
@@ -116,7 +123,7 @@ TextInput.propTypes = {
   persons: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      img: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       isActive: PropTypes.bool.isRequired,
     }),

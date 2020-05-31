@@ -45,7 +45,7 @@ const Text = styled.p`
     `};
 
   ${props =>
-    props.form &&
+    props.formlook &&
     css`
       color: ${({ theme }) => theme.darkgray};
       margin: 22px 0 8px 0;
