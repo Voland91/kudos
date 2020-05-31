@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import ReactSelect from 'react-select';
 
-const OneSelect = styled(ReactSelect)`
+const Select = styled(ReactSelect)`
   font-weight: ${({ theme }) => theme.regular};
   font-size: ${({ theme }) => theme.small};
   color: ${({ theme }) => theme.darkgray};
@@ -14,4 +14,4 @@ const OneSelect = styled(ReactSelect)`
     `}
 `;
 
-export default OneSelect;
+export default Select;
