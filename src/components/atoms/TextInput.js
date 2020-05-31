@@ -6,9 +6,11 @@ import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHashtagPlugin from 'draft-js-hashtag-plugin';
 import createMentionPlugin, { defaultSuggestionsFilter } from 'draft-js-mention-plugin';
+import createCounterPlugin from 'draft-js-counter-plugin';
 import emojiEditorStyles from './editorStyles/emojiEditorStyles.css';
 import mentionsEditorStyles from './editorStyles/mentionsEditorStyles.css';
-import hashtagEditorStyles from './editorStyles/hashtagEditorStyle.css';
+import hashtagEditorStyles from './editorStyles/hashtagEditorStyles.css';
+import counterEditorStyles from './editorStyles/counterEditorStyles.css';
 
 const StyledEditorWrapper = styled.div`
   background-color: transparent;
@@ -27,6 +29,14 @@ const StyledEmoticonsWrapper = styled.div`
   justify-content: flex-end;
 `;
 
+const StyledCounterWrapper = styled.div`
+  font-size: ${({ theme }) => theme.small};
+  color: ${({ theme }) => theme.gray};
+  margin-top: 8px;
+  width: 57px;
+  text-align: right;
+`;
+
 class TextInput extends React.Component {
   constructor(props) {
     super(props);
@@ -34,16 +44,27 @@ class TextInput extends React.Component {
     this.mentionPlugin = createMentionPlugin();
     this.emojiPlugin = createEmojiPlugin();
     this.hashtagPlugin = createHashtagPlugin();
+    this.counterPlugin = createCounterPlugin();
   }
 
   state = {
     editorState: EditorState.createEmpty(),
     // eslint-disable-next-line react/destructuring-assignment
     suggestions: this.props.persons,
+    readOnly: false,
   };
 
   onChange = editorState => {
     this.setState({ editorState });
+
+    const MAX_LENGTH = 500;
+    const length = editorState.getCurrentContent().getPlainText('').length + 1;
+
+    if (length <= MAX_LENGTH) {
+      this.setState({ editorState }); // or this.setState({ editorState: editorState })
+    } else {
+      this.setState({ readOnly: true });
+    }
   };
 
   onSearchChange = ({ value }) => {
@@ -54,24 +75,37 @@ class TextInput extends React.Component {
   };
 
   render() {
-    const { editorState, suggestions } = this.state;
+    const { editorState, suggestions, readOnly } = this.state;
     const { MentionSuggestions } = this.mentionPlugin;
     const { EmojiSuggestions, EmojiSelect } = this.emojiPlugin;
-    const plugins = [this.mentionPlugin, this.emojiPlugin, this.hashtagPlugin];
+    const { CharCounter } = this.counterPlugin;
+    const plugins = [this.mentionPlugin, this.emojiPlugin, this.hashtagPlugin, this.counterPlugin];
 
     return (
       <>
         <StyledEditorWrapper
           className={
-            (emojiEditorStyles.editor, mentionsEditorStyles.editor, hashtagEditorStyles.editor)
+            (emojiEditorStyles.editor,
+            mentionsEditorStyles.editor,
+            hashtagEditorStyles.editor,
+            counterEditorStyles.editor)
           }
         >
-          <Editor editorState={editorState} onChange={this.onChange} plugins={plugins} />
+          <Editor
+            editorState={editorState}
+            onChange={this.onChange}
+            plugins={plugins}
+            readOnly={readOnly}
+          />
           <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={suggestions} />
           <EmojiSuggestions />
         </StyledEditorWrapper>
         <StyledEmoticonsWrapper>
           <EmojiSelect />
+          <StyledCounterWrapper>
+            <CharCounter limit={500} />
+            /500
+          </StyledCounterWrapper>
         </StyledEmoticonsWrapper>
       </>
     );
