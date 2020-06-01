@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { border } from 'theme/mixins';
-import Text from 'components/atoms/Text';
 import PostListsHeader from 'components/molecules/PostListsHeader';
 import Kudos from 'components/molecules/Kudos';
 import PostListsComment from 'components/molecules/PostListsComment';
 import PostListsNavigation from 'components/molecules/PostListsNavigation';
+import '../atoms/editorStyles/emojiEditorStyles.css';
+import '../atoms/editorStyles/mentionsEditorStyles.css';
+import '../atoms/editorStyles/hashtagEditorStyles.css';
+import '../atoms/editorStyles/counterEditorStyles.css';
+import parser from 'html-react-parser';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -14,8 +18,13 @@ const StyledWrapper = styled.div`
   padding: 16px;
   margin: 13px 0;
   width: ${({ theme }) => theme.width};
-  height: 513px;
   ${border};
+`;
+const StyledPostTextWrapper = styled.div`
+  color: ${({ theme }) => theme.black};
+  font-weight: ${({ theme }) => theme.regular};
+  font-size: ${({ theme }) => theme.small};
+  margin: 28px 0 24px 0;
 `;
 
 const Post = ({
@@ -31,10 +40,12 @@ const Post = ({
   departamentId,
 }) => {
   const activePerson = persons.find(person => person.isActive);
+  const textPost = parser(description);
+
   return (
     <StyledWrapper>
       <PostListsHeader name={name} date={date} avatar={avatar} />
-      <Text>{description}</Text>
+      <StyledPostTextWrapper>{textPost}</StyledPostTextWrapper>
       <Kudos kudos={kudos} persons={persons} kudoses={kudoses} />
       <PostListsNavigation heart={heart} postId={postId} departamentId={departamentId} />
       <PostListsComment avatar={activePerson.avatar} />

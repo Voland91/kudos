@@ -61,7 +61,7 @@ class TextInput extends React.Component {
     const length = editorState.getCurrentContent().getPlainText('').length + 1;
 
     if (length <= MAX_LENGTH) {
-      this.setState({ editorState }); // or this.setState({ editorState: editorState })
+      this.setState({ editorState });
     } else {
       this.setState({ readOnly: true });
     }
@@ -74,18 +74,13 @@ class TextInput extends React.Component {
     });
   };
 
-  // postText = () => {
-  //   // eslint-disable-next-line react/destructuring-assignment
-  //   const contentState = this.state.editorState.getCurrentContent();
-  //   const raw = convertToRaw(contentState);
-  // };
-
   render() {
     const { editorState, suggestions, readOnly } = this.state;
     const { MentionSuggestions } = this.mentionPlugin;
     const { EmojiSuggestions, EmojiSelect } = this.emojiPlugin;
     const { CharCounter } = this.counterPlugin;
     const plugins = [this.mentionPlugin, this.emojiPlugin, this.hashtagPlugin, this.counterPlugin];
+    const { postText } = this.props;
 
     return (
       <>
@@ -96,13 +91,14 @@ class TextInput extends React.Component {
             hashtagEditorStyles.editor,
             counterEditorStyles.editor)
           }
+          onBlur={postText}
         >
           <Editor
             editorState={editorState}
             onChange={this.onChange}
             plugins={plugins}
             readOnly={readOnly}
-            postText={this.postText}
+            onInput={postText}
           />
           <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={suggestions} />
           <EmojiSuggestions />
@@ -128,6 +124,7 @@ TextInput.propTypes = {
       isActive: PropTypes.bool.isRequired,
     }),
   ),
+  postText: PropTypes.func.isRequired,
 };
 
 TextInput.defaultProps = {

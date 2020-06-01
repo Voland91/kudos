@@ -23,8 +23,8 @@ const Posts = ({ posts, persons, kudoses }) => {
         {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, departamentId }) => (
           <Post
             persons={persons}
-            name={persons[authorId].name}
-            avatar={persons[authorId].avatar}
+            name={persons[authorId - 1].name}
+            avatar={persons[authorId - 1].avatar}
             date={date}
             description={description}
             key={postId}

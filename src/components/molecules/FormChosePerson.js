@@ -61,7 +61,7 @@ FormChosePerson.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ),
-  whichPerson: PropTypes.number.isRequired,
+  whichPerson: PropTypes.func.isRequired,
 };
 
 FormChosePerson.defaultProps = {

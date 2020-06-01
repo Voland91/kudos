@@ -12,20 +12,14 @@ const StyledEditorWrapper = styled.div`
   padding: 6px 8px;
 `;
 
-const FormPost = ({ persons }) => {
-  // const postText = e => {
-  //   console.log(e.target);
-  // };
-
-  return (
-    <>
-      <Text formlook>Treść posta nad kudosem</Text>
-      <StyledEditorWrapper>
-        <TextInput persons={persons} />
-      </StyledEditorWrapper>
-    </>
-  );
-};
+const FormPost = ({ persons, postText }) => (
+  <>
+    <Text formlook>Treść posta nad kudosem</Text>
+    <StyledEditorWrapper>
+      <TextInput persons={persons} postText={postText} />
+    </StyledEditorWrapper>
+  </>
+);
 
 FormPost.propTypes = {
   persons: PropTypes.arrayOf(
@@ -36,6 +30,7 @@ FormPost.propTypes = {
       isActive: PropTypes.bool.isRequired,
     }),
   ),
+  postText: PropTypes.func.isRequired,
 };
 
 FormPost.defaultProps = {

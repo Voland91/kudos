@@ -19,7 +19,7 @@ const StyledKudosWrapper = styled.div`
 `;
 
 class Form extends React.Component {
-  state = { personId: '' };
+  state = { personId: '', departamentId: '', postDescription: '', kudosId: '' };
 
   personID = e => {
     this.setState({
@@ -27,27 +27,53 @@ class Form extends React.Component {
     });
   };
 
+  groupID = e => {
+    this.setState({
+      departamentId: e.id,
+    });
+  };
+
+  postText = e => {
+    this.setState({
+      postDescription: e.target.innerHTML,
+    });
+  };
+
+  kudosId = e => {
+    this.setState({
+      kudosId: parseInt(e.target.id, 10),
+    });
+  };
+
   render() {
     // eslint-disable-next-line no-shadow
     const { kudoses, persons, addPost, history } = this.props;
-    const { personId } = this.state;
+    const { personId, departamentId, postDescription, kudosId } = this.state;
+    const activePerson = persons.find(person => person.isActive);
 
     return (
       <>
         <FormHeader />
-        <FormPost persons={persons} />
+        <FormPost persons={persons} postText={this.postText} />
         <Text formlook>Wybierz osobę, której przyznajesz kudos</Text>
         <FormChosePerson persons={persons} whichPerson={this.personID} />
         <Text formlook>Wybierz kudos</Text>
         {kudoses.map(({ title, description, img, id }) => (
-          <FormAddKudos title={title} description={description} img={img} key={id} />
+          <FormAddKudos
+            title={title}
+            description={description}
+            img={img}
+            key={id}
+            id={id}
+            whichKudos={this.kudosId}
+          />
         ))}
         <Text formlook>Wybierz grupę</Text>
         <StyledKudosWrapper>
-          <FormChoseGroup />
+          <FormChoseGroup whichGroup={this.groupID} />
           <Button
             onClick={() => {
-              addPost(personId);
+              addPost(personId, activePerson.id, departamentId, postDescription, kudosId);
               setTimeout(() => history.push('/'), 300);
             }}
           >
@@ -84,9 +110,4 @@ Form.defaultProps = {
   persons: {},
 };
 
-export default withRouter(
-  connect(
-    null,
-    { addPost },
-  )(Form),
-);
+export default withRouter(connect(null, { addPost })(Form));
