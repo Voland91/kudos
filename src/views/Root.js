@@ -9,7 +9,7 @@ import Forms from 'views/Forms';
 const Root = () => (
   <Provider store={store}>
     <MainTemplate>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={Posts} />
           <Route path="/form" component={Forms} />
