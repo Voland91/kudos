@@ -46,7 +46,7 @@ const StyledDescriptionWrapper = styled.div`
 
 const FormAddKudos = ({ title, description, img, whichKudos, id }) => (
   <>
-    <Input id={id} type="radio" onChange={whichKudos} name="kudos" />
+    <Input id={id} type="radio" onChange={whichKudos} name="kudos1" />
     <StyledKudosWrapper htmlFor={id}>
       <Icon smallkudos src={`${img}`} />
       <StyledDescriptionWrapper>

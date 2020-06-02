@@ -11,10 +11,21 @@ import FormAddKudos from 'components/molecules/FormAddKudos';
 import Text from 'components/atoms/Text';
 import FormChoseGroup from 'components/molecules/FormChoseGroup';
 import Button from 'components/atoms/Button';
+import { border } from 'theme/mixins';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/addAction';
 
-const StyledKudosWrapper = styled.div`
+const FormWrapper = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 35px;
+  margin: 0 0 13px 0;
+  width: ${({ theme }) => theme.width};
+  height: 1015px;
+  ${border};
+`;
+
+const StyledNavWrapper = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -26,7 +37,7 @@ class Form extends React.Component {
     departamentId: '',
     postDescription: '',
     kudosId: '',
-    validation: false,
+    // validation: false,
   };
 
   // errorMessages = {
@@ -62,78 +73,79 @@ class Form extends React.Component {
   };
 
   // validation
-  formValidator = () => {
-    const { personId, departamentId, postDescription, kudosId } = this.state;
+  // formValidator = () => {
+  //   const { personId, departamentId, postDescription, kudosId } = this.state;
 
-    let person;
-    let group;
-    let post;
-    let kudos = false;
+  //   let person;
+  //   let group;
+  //   let post;
+  //   let kudos = false;
 
-    if (personId.length !== '') {
-      person = true;
-    }
-    if (departamentId !== '') {
-      group = true;
-    }
-    if (postDescription !== '') {
-      post = true;
-    }
-    if (kudosId !== '') {
-      kudos = true;
-    }
-    if ((person, group, post, kudos)) {
-      this.setState({
-        validation: true,
-      });
-    }
-    return { person, group, post, kudos };
-  };
+  //   if (personId.length !== '') {
+  //     person = true;
+  //   }
+  //   if (departamentId !== '') {
+  //     group = true;
+  //   }
+  //   if (postDescription !== '') {
+  //     post = true;
+  //   }
+  //   if (kudosId !== '') {
+  //     kudos = true;
+  //   }
+  //   if ((person, group, post, kudos)) {
+  //     this.setState({
+  //       validation: true,
+  //     });
+  //   }
+  //   return { person, group, post, kudos };
+  // };
 
   // handleClick = () => {};
 
   render() {
     // eslint-disable-next-line no-shadow
     const { kudoses, persons, addPost, history } = this.props;
-    const { personId, departamentId, postDescription, kudosId, validation } = this.state;
+    const { personId, departamentId, postDescription, kudosId } = this.state;
     const activePerson = persons.find(person => person.isActive);
     dayjs.extend(utc);
     return (
       <>
-        <FormHeader />
-        <FormPost persons={persons} postText={this.postText} />
-        <Text formlook>Wybierz osobę, której przyznajesz kudos</Text>
-        <FormChosePerson persons={persons} whichPerson={this.personID} />
-        <Text formlook>Wybierz kudos</Text>
-        {kudoses.map(({ title, description, img, id }) => (
-          <FormAddKudos
-            title={title}
-            description={description}
-            img={img}
-            key={id}
-            id={id}
-            whichKudos={this.kudosId}
-          />
-        ))}
-        <Text formlook>Wybierz grupę</Text>
-        <StyledKudosWrapper>
-          <FormChoseGroup whichGroup={this.groupID} />
-          <Button
-            onClick={() => {
-              this.formValidator();
-              if (validation) {
+        <FormWrapper id="form1">
+          <FormHeader />
+          <FormPost persons={persons} postText={this.postText} />
+          <Text formlook>Wybierz osobę, której przyznajesz kudos</Text>
+          <FormChosePerson persons={persons} whichPerson={this.personID} />
+          <Text formlook>Wybierz kudos</Text>
+          {kudoses.map(({ title, description, img, id }) => (
+            <FormAddKudos
+              title={title}
+              description={description}
+              img={img}
+              key={id}
+              id={id}
+              whichKudos={this.kudosId}
+            />
+          ))}
+          <Text formlook>Wybierz grupę</Text>
+          <StyledNavWrapper>
+            <FormChoseGroup whichGroup={this.groupID} />
+            <Button
+              type="submit"
+              form="form1"
+              onClick={() => {
                 const date = dayjs
                   .utc()
                   .local()
                   .format();
                 addPost(personId, activePerson.id, departamentId, postDescription, kudosId, date);
                 history.push('/');
-              }
-            }}
-          >
-            Opublikuj
-          </Button>
-        </StyledKudosWrapper>
+              }}
+            >
+              Opublikuj
+            </Button>
+          </StyledNavWrapper>
+        </FormWrapper>
       </>
     );
   }
