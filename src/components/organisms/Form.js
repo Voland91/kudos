@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import FormPost from 'components/molecules/FormPost';
 import FormHeader from 'components/molecules/FormHeader';
 import FormChosePerson from 'components/molecules/FormChosePerson';
@@ -27,12 +29,12 @@ class Form extends React.Component {
     validation: false,
   };
 
-  errorMessages = {
-    errorPost: 'Wpisz jakąś treść',
-    errorPerson: 'Wybierz osobę',
-    errorKudos: 'Wybierz kudos',
-    errorGroup: 'Wybierz grupę',
-  };
+  // errorMessages = {
+  //   errorPost: 'Wpisz jakąś treść',
+  //   errorPerson: 'Wybierz osobę',
+  //   errorKudos: 'Wybierz kudos',
+  //   errorGroup: 'Wybierz grupę',
+  // };
 
   // takind data form Form
   personID = e => {
@@ -88,12 +90,14 @@ class Form extends React.Component {
     return { person, group, post, kudos };
   };
 
+  // handleClick = () => {};
+
   render() {
     // eslint-disable-next-line no-shadow
     const { kudoses, persons, addPost, history } = this.props;
     const { personId, departamentId, postDescription, kudosId, validation } = this.state;
     const activePerson = persons.find(person => person.isActive);
-
+    dayjs.extend(utc);
     return (
       <>
         <FormHeader />
@@ -118,7 +122,11 @@ class Form extends React.Component {
             onClick={() => {
               this.formValidator();
               if (validation) {
-                addPost(personId, activePerson.id, departamentId, postDescription, kudosId);
+                const date = dayjs
+                  .utc()
+                  .local()
+                  .format();
+                addPost(personId, activePerson.id, departamentId, postDescription, kudosId, date);
                 history.push('/');
               }
             }}

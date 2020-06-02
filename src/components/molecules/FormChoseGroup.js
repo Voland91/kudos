@@ -64,7 +64,9 @@ const FormChoseGroup = ({ departaments, whichGroup }) => {
     };
   });
 
-  return <Select options={options} placeholder="" styles={customStyles} onChange={whichGroup} />;
+  return (
+    <Select required options={options} placeholder="" styles={customStyles} onChange={whichGroup} />
+  );
 };
 
 const mapStateToProps = state => ({
