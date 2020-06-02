@@ -1,0 +1,22 @@
+{
+  "main.css": "/kudos/static/css/main.3bd0cb4e.chunk.css",
+  "main.js": "/kudos/static/js/main.4223a773.chunk.js",
+  "main.js.map": "/kudos/static/js/main.4223a773.chunk.js.map",
+  "runtime~main.js": "/kudos/static/js/runtime~main.7e66e30b.js",
+  "runtime~main.js.map": "/kudos/static/js/runtime~main.7e66e30b.js.map",
+  "static/js/2.d9e01ce2.chunk.js": "/kudos/static/js/2.d9e01ce2.chunk.js",
+  "static/js/2.d9e01ce2.chunk.js.map": "/kudos/static/js/2.d9e01ce2.chunk.js.map",
+  "index.html": "/kudos/index.html",
+  "precache-manifest.fec9c6a053bc61abc18b24526a98def3.js": "/kudos/precache-manifest.fec9c6a053bc61abc18b24526a98def3.js",
+  "service-worker.js": "/kudos/service-worker.js",
+  "static/css/main.3bd0cb4e.chunk.css.map": "/kudos/static/css/main.3bd0cb4e.chunk.css.map",
+  "static/media/agreement.svg": "/kudos/static/media/agreement.cde695c4.svg",
+  "static/media/agreement_form.svg": "/kudos/static/media/agreement_form.c119efe0.svg",
+  "static/media/close.svg": "/kudos/static/media/close.18722765.svg",
+  "static/media/comment-alt-solid.svg": "/kudos/static/media/comment-alt-solid.729ac9c3.svg",
+  "static/media/ellipsis-v-solid.svg": "/kudos/static/media/ellipsis-v-solid.09e0a6e3.svg",
+  "static/media/heart-solid.svg": "/kudos/static/media/heart-solid.d5ba9fd8.svg",
+  "static/media/paperclip-solid.svg": "/kudos/static/media/paperclip-solid.08900ddd.svg",
+  "static/media/smile-regular.svg": "/kudos/static/media/smile-regular.5a184a47.svg",
+  "static/media/sticky-note-regular.svg": "/kudos/static/media/sticky-note-regular.c43ce789.svg"
+}
