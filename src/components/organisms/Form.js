@@ -37,15 +37,7 @@ class Form extends React.Component {
     departamentId: '',
     postDescription: '',
     kudosId: '',
-    // validation: false,
   };
-
-  // errorMessages = {
-  //   errorPost: 'Wpisz jakąś treść',
-  //   errorPerson: 'Wybierz osobę',
-  //   errorKudos: 'Wybierz kudos',
-  //   errorGroup: 'Wybierz grupę',
-  // };
 
   // takind data form Form
   personID = e => {
@@ -72,37 +64,6 @@ class Form extends React.Component {
     });
   };
 
-  // validation
-  // formValidator = () => {
-  //   const { personId, departamentId, postDescription, kudosId } = this.state;
-
-  //   let person;
-  //   let group;
-  //   let post;
-  //   let kudos = false;
-
-  //   if (personId.length !== '') {
-  //     person = true;
-  //   }
-  //   if (departamentId !== '') {
-  //     group = true;
-  //   }
-  //   if (postDescription !== '') {
-  //     post = true;
-  //   }
-  //   if (kudosId !== '') {
-  //     kudos = true;
-  //   }
-  //   if ((person, group, post, kudos)) {
-  //     this.setState({
-  //       validation: true,
-  //     });
-  //   }
-  //   return { person, group, post, kudos };
-  // };
-
-  // handleClick = () => {};
-
   render() {
     // eslint-disable-next-line no-shadow
     const { kudoses, persons, addPost, history } = this.props;
@@ -111,7 +72,7 @@ class Form extends React.Component {
     dayjs.extend(utc);
     return (
       <>
-        <FormWrapper id="form1">
+        <FormWrapper>
           <FormHeader />
           <FormPost persons={persons} postText={this.postText} />
           <Text formlook>Wybierz osobę, której przyznajesz kudos</Text>
@@ -131,8 +92,6 @@ class Form extends React.Component {
           <StyledNavWrapper>
             <FormChoseGroup whichGroup={this.groupID} />
             <Button
-              type="submit"
-              form="form1"
               onClick={() => {
                 const date = dayjs
                   .utc()

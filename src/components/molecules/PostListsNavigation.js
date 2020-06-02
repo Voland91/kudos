@@ -76,7 +76,4 @@ const mapStateToProps = state => ({
   departaments: state.departamentsState,
 });
 
-export default connect(
-  mapStateToProps,
-  { addHeart },
-)(PostNavigation);
+export default connect(mapStateToProps, { addHeart })(PostNavigation);

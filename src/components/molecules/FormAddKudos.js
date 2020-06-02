@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { lightborder } from 'theme/mixins';
 import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
@@ -19,12 +19,6 @@ const StyledKudosWrapper = styled.label`
   &:hover {
     background-color: ${({ theme }) => theme.lightgray};
   }
-/* 
-  ${props =>
-    props.click &&
-    css`
-      background-color: ${({ theme }) => theme.lightgray};
-    `}; */
 `;
 
 const Input = styled.input`
@@ -46,7 +40,7 @@ const StyledDescriptionWrapper = styled.div`
 
 const FormAddKudos = ({ title, description, img, whichKudos, id }) => (
   <>
-    <Input id={id} type="radio" onChange={whichKudos} name="kudos1" />
+    <Input id={id} type="radio" onChange={whichKudos} name="kudos" />
     <StyledKudosWrapper htmlFor={id}>
       <Icon smallkudos src={`${img}`} />
       <StyledDescriptionWrapper>
