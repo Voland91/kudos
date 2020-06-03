@@ -9,9 +9,11 @@ import Title from 'components/atoms/Title';
 import Date from 'components/atoms/Date';
 import Avatar from 'components/atoms/Avatar';
 import icon from 'assets/icons/agreement.svg';
+import 'dayjs/locale/pl';
 
 dayjs.extend(utc);
 dayjs.extend(relativeTime);
+dayjs.locale('pl');
 
 const StyledHeaderWrapper = styled.div`
   display: flex;

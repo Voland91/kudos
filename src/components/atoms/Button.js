@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
   background-color: ${({ theme }) => theme.purple};
@@ -11,6 +11,18 @@ const Button = styled.button`
   cursor: pointer;
   border-radius: 6px;
   border: none;
+
+  ${props =>
+    props.dots &&
+    css`
+      background: url(${props.src});
+      background-repeat: no-repeat;
+      background-color: transparent;
+      height: 14px;
+      width: 14px;
+      padding: 1px;
+      border-radius: 0;
+    `};
 `;
 
 export default Button;

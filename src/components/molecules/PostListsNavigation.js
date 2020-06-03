@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'components/atoms/Icon';
 import Text from 'components/atoms/Text';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
+import Button from 'components/atoms/Button';
 import hearticon from 'assets/icons/heart-solid.svg';
 import comment from 'assets/icons/comment-alt-solid.svg';
 import dots from 'assets/icons/ellipsis-v-solid.svg';
@@ -31,10 +33,24 @@ const StyledRightWrapper = styled.div`
   margin-right: 17px;
 `;
 
+const StyledListWapper = styled.ul`
+  background-color: ${({ theme }) => theme.lightgray};
+  font-size: ${({ theme }) => theme.xsmall};
+  list-style: none;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-right: 8px;
+`;
+
+const StyledListItem = styled.li`
+  padding: 5px 12px;
+  &:hover {
+    background-color: ${({ theme }) => theme.white};
+  }
+`;
+
 // eslint-disable-next-line no-shadow
 const PostListNavigation = ({ postId, heart, addHeart, groupId, groups }) => {
-  // const dep = departaments.find(item => item.id === departaments.departamentId);
-
   const dep = groups.find(item => item.id === groupId);
 
   return (
@@ -49,7 +65,25 @@ const PostListNavigation = ({ postId, heart, addHeart, groupId, groups }) => {
         <Icon small src={comment} />
         <Text counter>0</Text>
       </StyledRightWrapper>
-      <Icon small src={dots} />
+      <OverlayTrigger
+        rootClose
+        trigger="click"
+        placement="left"
+        overlay={
+          <Popover>
+            <Popover.Content>
+              <StyledListWapper>
+                <StyledListItem>Edytuj</StyledListItem>
+                <StyledListItem>Udostępnij</StyledListItem>
+                <StyledListItem>Usuń</StyledListItem>
+              </StyledListWapper>
+            </Popover.Content>
+          </Popover>
+        }
+      >
+        <Button dots src={dots} />
+      </OverlayTrigger>
+      {/* <yButton dots src={dots} /> */}
     </StyledBadgeWrapper>
   );
 };
