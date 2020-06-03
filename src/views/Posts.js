@@ -1,24 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Post from 'components/organisms/Post';
 import AddPost from 'components/organisms/AddPost';
 import MainTemplate from 'templates/MainTemplate';
+import { useMediaQuery } from 'react-responsive';
 
-const StyledNotesWrapper = styled.div`
-  margin: 50px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const StyledPostsWrapper = styled.div`
+  margin: 50px auto;
+  width: ${({ theme }) => theme.width};
+  ${props =>
+    props.isMobile &&
+    css`
+      width: 100%;
+    `};
 `;
 
 const Posts = ({ posts, persons, kudoses }) => {
   const sortedPosts = posts.sort((a, b) => parseFloat(b.postId) - parseFloat(a.postId));
+  const isMobile = useMediaQuery({ maxWidth: 664 });
 
   return (
     <MainTemplate>
-      <StyledNotesWrapper>
+      <StyledPostsWrapper isMobile={isMobile}>
         <AddPost persons={persons} />
         {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, groupId }) => (
           <Post
@@ -36,7 +41,7 @@ const Posts = ({ posts, persons, kudoses }) => {
             groupId={groupId}
           />
         ))}
-      </StyledNotesWrapper>
+      </StyledPostsWrapper>
     </MainTemplate>
   );
 };

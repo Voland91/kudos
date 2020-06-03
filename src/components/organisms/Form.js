@@ -20,14 +20,13 @@ const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
   padding: 35px;
-  width: ${({ theme }) => theme.width};
+  width: 100%;
   min-height: 1045px;
   ${border};
 `;
 
 const StyledNavWrapper = styled.div`
   display: flex;
-  width: 100%;
   justify-content: space-between;
 `;
 

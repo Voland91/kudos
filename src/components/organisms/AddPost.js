@@ -12,7 +12,7 @@ const StyledWrapper = styled.button`
   display: flex;
   padding: 16px;
   margin: 0;
-  width: ${({ theme }) => theme.width};
+  width: 100%;
   height: 56px;
   align-items: center;
   ${border};

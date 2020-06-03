@@ -6,7 +6,7 @@ const Input = styled.input`
   font-size: ${({ theme }) => theme.small};
   color: ${({ theme }) => theme.darkgray};
   opacity: 50%;
-  width: 334px;
+  /* width: 334px; */
   height: 20px;
   border: none;
   flex: 1;

@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   padding: 16px;
   margin: 13px 0;
-  width: ${({ theme }) => theme.width};
+
   ${border};
 `;
 const StyledPostTextWrapper = styled.div`
@@ -41,6 +41,8 @@ const Post = ({
 }) => {
   const activePerson = persons.find(person => person.isActive);
   const textPost = parser(description);
+
+  // console.log(isMobile);
 
   return (
     <StyledWrapper>
