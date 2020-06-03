@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "55e06088be68b9b0ebb2",
+    "revision": "4e9ccece55e4fe3ae346",
     "url": "/kudos/static/css/main.89f74ddb.chunk.css"
   },
   {
-    "revision": "55e06088be68b9b0ebb2",
-    "url": "/kudos/static/js/main.2979f9bf.chunk.js"
+    "revision": "4e9ccece55e4fe3ae346",
+    "url": "/kudos/static/js/main.d82ec4e3.chunk.js"
   },
   {
     "revision": "1c8609e154559289f47e",
     "url": "/kudos/static/js/runtime~main.7e66e30b.js"
   },
   {
-    "revision": "5a002498c07848ddfdc9",
-    "url": "/kudos/static/js/2.bc636c21.chunk.js"
+    "revision": "a9615650d445b0b2d4b5",
+    "url": "/kudos/static/js/2.afeac314.chunk.js"
   },
   {
     "revision": "cde695c4923ef84cf409280121a2c331",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/kudos/static/media/close.18722765.svg"
   },
   {
-    "revision": "f0bcd7a2fe002a5103ca3c2033e7caa5",
+    "revision": "30bf350228504e04381c2c278c8f891d",
     "url": "/kudos/index.html"
   }
 ];
