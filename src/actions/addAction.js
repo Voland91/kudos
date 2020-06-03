@@ -5,11 +5,11 @@ export const addHeart = id => ({
   id,
 });
 
-export const addPost = (personId, authorId, departamentId, postDescription, kudosId, date) => ({
+export const addPost = (personId, authorId, groupId, postDescription, kudosId, date) => ({
   type: ADD_POST,
   personId,
   authorId,
-  departamentId,
+  groupId,
   postDescription,
   kudosId,
   date,

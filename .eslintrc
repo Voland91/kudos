@@ -9,6 +9,9 @@
     "document": true
   },
   "rules": {
+    "rules": {
+      "no-shadow": "off"
+    },
     "import/prefer-default-export": 0,
     "react/jsx-filename-extension": [
       1,

@@ -50,8 +50,8 @@ const customStyles = {
 };
 
 // options to Select
-const FormChoseGroup = ({ departaments, whichGroup }) => {
-  const options = departaments.map(item => {
+const FormChoseGroup = ({ groups, onChange }) => {
+  const options = groups.map(item => {
     return {
       value: `${item.name}`,
       label: (
@@ -65,27 +65,27 @@ const FormChoseGroup = ({ departaments, whichGroup }) => {
   });
 
   return (
-    <Select required options={options} placeholder="" styles={customStyles} onChange={whichGroup} />
+    <Select required options={options} placeholder="" styles={customStyles} onChange={onChange} />
   );
 };
 
 const mapStateToProps = state => ({
-  departaments: state.departamentsState,
+  groups: state.groupsState,
 });
 
 FormChoseGroup.propTypes = {
-  departaments: PropTypes.arrayOf(
+  groups: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
     }),
   ),
-  whichGroup: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 FormChoseGroup.defaultProps = {
-  departaments: {},
+  groups: {},
 };
 
 export default connect(mapStateToProps, null)(FormChoseGroup);

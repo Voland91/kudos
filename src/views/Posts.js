@@ -20,7 +20,7 @@ const Posts = ({ posts, persons, kudoses }) => {
     <MainTemplate>
       <StyledNotesWrapper>
         <AddPost persons={persons} />
-        {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, departamentId }) => (
+        {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, groupId }) => (
           <Post
             persons={persons}
             name={persons[authorId - 1].name}
@@ -33,7 +33,7 @@ const Posts = ({ posts, persons, kudoses }) => {
             kudos={kudos}
             kudoses={kudoses}
             posts={posts}
-            departamentId={departamentId}
+            groupId={groupId}
           />
         ))}
       </StyledNotesWrapper>
@@ -49,7 +49,7 @@ Posts.propTypes = {
       date: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
       heart: PropTypes.number.isRequired,
-      departamentId: PropTypes.number.isRequired,
+      groupId: PropTypes.number.isRequired,
       kudos: PropTypes.objectOf(PropTypes.number),
     }),
   ),

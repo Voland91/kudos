@@ -12,11 +12,11 @@ const StyledEditorWrapper = styled.div`
   padding: 6px 8px;
 `;
 
-const FormPost = ({ persons, postText }) => (
+const FormPost = ({ persons, onChange }) => (
   <>
     <Text formlook>Treść posta nad kudosem</Text>
     <StyledEditorWrapper>
-      <TextInput persons={persons} postText={postText} />
+      <TextInput persons={persons} onChange={onChange} />
     </StyledEditorWrapper>
   </>
 );
@@ -30,7 +30,7 @@ FormPost.propTypes = {
       isActive: PropTypes.bool.isRequired,
     }),
   ),
-  postText: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 FormPost.defaultProps = {

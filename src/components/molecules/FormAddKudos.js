@@ -6,15 +6,20 @@ import Icon from 'components/atoms/Icon';
 import Title from 'components/atoms/Title';
 import Text from 'components/atoms/Text';
 
+const StyledKudosLabel = styled.label`
+  margin-top: 16px;
+  padding: 0;
+  height: 80px;
+`;
+
 const StyledKudosWrapper = styled.label`
+  margin: 0px;
   display: flex;
   height: 80px;
   width: 100%;
-  justify-content: space-between;
   ${lightborder};
   padding-left: 29px;
   align-items: center;
-  margin-top: 16px;
   cursor: pointer;
   &:hover {
     background-color: ${({ theme }) => theme.lightgray};
@@ -22,8 +27,7 @@ const StyledKudosWrapper = styled.label`
 `;
 
 const Input = styled.input`
-  -webkit-appearance: none;
-
+  display: none;
   &:checked + ${StyledKudosWrapper} {
     background-color: ${({ theme }) => theme.lightgray};
     border: 1px solid #a8996f;
@@ -38,16 +42,18 @@ const StyledDescriptionWrapper = styled.div`
   flex: 1;
 `;
 
-const FormAddKudos = ({ title, description, img, whichKudos, id }) => (
+const FormAddKudos = ({ title, description, img, onChange, id }) => (
   <>
-    <Input id={id} type="radio" onChange={whichKudos} name="kudos" />
-    <StyledKudosWrapper htmlFor={id}>
-      <Icon smallkudos src={`${img}`} />
-      <StyledDescriptionWrapper>
-        <Text smallkudos>{title}</Text>
-        <Title smallkudos>{description}</Title>
-      </StyledDescriptionWrapper>
-    </StyledKudosWrapper>
+    <StyledKudosLabel htmlFor="kudos">
+      <Input id={id} type="radio" onChange={onChange} name="kudos" />
+      <StyledKudosWrapper htmlFor={id}>
+        <Icon smallkudos src={`${img}`} />
+        <StyledDescriptionWrapper>
+          <Text smallkudos>{title}</Text>
+          <Title smallkudos>{description}</Title>
+        </StyledDescriptionWrapper>
+      </StyledKudosWrapper>
+    </StyledKudosLabel>
   </>
 );
 
@@ -56,7 +62,7 @@ FormAddKudos.propTypes = {
   description: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  whichKudos: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default FormAddKudos;

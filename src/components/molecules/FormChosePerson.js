@@ -40,16 +40,19 @@ const customStyles = {
   }),
 };
 
-const FormChosePerson = ({ persons, whichPerson }) => {
+const FormChosePerson = ({ persons, onChange }) => {
   return (
     <Select
       multi
       placeholder=""
-      isMulti
-      options={persons.map(({ name, id }) => ({ value: { id }, label: `${name}` }))}
+      // isMulti
+      // name={'person'}
+      options={persons.map(({ name, id }) => ({
+        value: { id },
+        label: `${name}`,
+      }))}
       styles={customStyles}
-      onChange={whichPerson}
-      // isDisabled = {oneValue}
+      onChange={onChange}
     />
   );
 };
@@ -61,7 +64,7 @@ FormChosePerson.propTypes = {
       id: PropTypes.number.isRequired,
     }),
   ),
-  whichPerson: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 FormChosePerson.defaultProps = {

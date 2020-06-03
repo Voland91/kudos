@@ -11,6 +11,7 @@ import emojiEditorStyles from './editorStyles/emojiEditorStyles.css';
 import mentionsEditorStyles from './editorStyles/mentionsEditorStyles.css';
 import hashtagEditorStyles from './editorStyles/hashtagEditorStyles.css';
 import counterEditorStyles from './editorStyles/counterEditorStyles.css';
+import baseEditorStyles from './editorStyles/baseEditorStyles.css';
 
 const StyledEditorWrapper = styled.div`
   background-color: transparent;
@@ -80,7 +81,7 @@ class TextInput extends React.Component {
     const { EmojiSuggestions, EmojiSelect } = this.emojiPlugin;
     const { CharCounter } = this.counterPlugin;
     const plugins = [this.mentionPlugin, this.emojiPlugin, this.hashtagPlugin, this.counterPlugin];
-    const { postText } = this.props;
+    const { onChange } = this.props;
 
     return (
       <>
@@ -89,16 +90,18 @@ class TextInput extends React.Component {
             (emojiEditorStyles.editor,
             mentionsEditorStyles.editor,
             hashtagEditorStyles.editor,
-            counterEditorStyles.editor)
+            counterEditorStyles.editor,
+            baseEditorStyles.editor)
           }
-          onBlur={postText}
+          onBlur={onChange}
         >
           <Editor
             editorState={editorState}
             onChange={this.onChange}
             plugins={plugins}
             readOnly={readOnly}
-            onInput={postText}
+            onFocus
+            // onInput={onChange}
           />
           <MentionSuggestions onSearchChange={this.onSearchChange} suggestions={suggestions} />
           <EmojiSuggestions />
@@ -124,7 +127,7 @@ TextInput.propTypes = {
       isActive: PropTypes.bool.isRequired,
     }),
   ),
-  postText: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 TextInput.defaultProps = {

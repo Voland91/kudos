@@ -32,10 +32,10 @@ const StyledRightWrapper = styled.div`
 `;
 
 // eslint-disable-next-line no-shadow
-const PostNavigation = ({ postId, heart, addHeart, departamentId, departaments }) => {
+const PostListNavigation = ({ postId, heart, addHeart, groupId, groups }) => {
   // const dep = departaments.find(item => item.id === departaments.departamentId);
 
-  const dep = departaments.find(item => item.id === departamentId);
+  const dep = groups.find(item => item.id === groupId);
 
   return (
     <StyledBadgeWrapper>
@@ -54,12 +54,12 @@ const PostNavigation = ({ postId, heart, addHeart, departamentId, departaments }
   );
 };
 
-PostNavigation.propTypes = {
+PostListNavigation.propTypes = {
   postId: PropTypes.number.isRequired,
   heart: PropTypes.number.isRequired,
   addHeart: PropTypes.func.isRequired,
-  departamentId: PropTypes.number.isRequired,
-  departaments: PropTypes.arrayOf(
+  groupId: PropTypes.number.isRequired,
+  groups: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
@@ -68,12 +68,12 @@ PostNavigation.propTypes = {
   ),
 };
 
-PostNavigation.defaultProps = {
-  departaments: {},
+PostListNavigation.defaultProps = {
+  groups: {},
 };
 
 const mapStateToProps = state => ({
-  departaments: state.departamentsState,
+  groups: state.groupsState,
 });
 
-export default connect(mapStateToProps, { addHeart })(PostNavigation);
+export default connect(mapStateToProps, { addHeart })(PostListNavigation);
