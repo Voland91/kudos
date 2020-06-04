@@ -18,17 +18,18 @@ I used: ReactJS, Create React App, React Router, React Redux, Styled Components,
 To open at your computer clone this repo, type: npm install, then: npm start. Ejoy! :)
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-React Router: https://github.com/ReactTraining/react-router
-React Redux: https://github.com/reduxjs/react-redux
-Styled Components: https://github.com/styled-components/styled-components
-React-Select: https://github.com/JedWatson/react-select
-DayJS: https://github.com/iamkun/dayjs
-DraftJS: https://github.com/facebook/draft-js
-DraftJS plugins: https://github.com/draft-js-plugins/draft-js-plugins
-React Bootstrap: https://github.com/react-bootstrap/react-bootstrap
-React Responsive: https://github.com/contra/react-responsive
-HTML React Parser: https://github.com/remarkablemark/html-react-parser
-PropTypes: https://github.com/facebook/prop-types
-Atomic Design: https://bradfrost.com/blog/post/atomic-web-design/
-Font Awesome: https://fontawesome.com/
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+Links:
+- React Router: https://github.com/ReactTraining/react-router
+- React Redux: https://github.com/reduxjs/react-redux
+- Styled Components: https://github.com/styled-components/styled-components
+- React-Select: https://github.com/JedWatson/react-select
+- DayJS: https://github.com/iamkun/dayjs
+- DraftJS: https://github.com/facebook/draft-js
+- DraftJS plugins: https://github.com/draft-js-plugins/draft-js-plugins
+- React Bootstrap: https://github.com/react-bootstrap/react-bootstrap
+- React Responsive: https://github.com/contra/react-responsive
+- HTML React Parser: https://github.com/remarkablemark/html-react-parser
+- PropTypes: https://github.com/facebook/prop-types
+- Atomic Design: https://bradfrost.com/blog/post/atomic-web-design/
+- Font Awesome: https://fontawesome.com/
