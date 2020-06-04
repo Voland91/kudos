@@ -3,7 +3,7 @@ Demo: https://voland91.github.io/kudos/
 This project was a recruitment task in some software house.
 I've made it in ReactJS based on delivered graphic project (Adobe XD) and guidelines. 
 
-In a few words: this is app which shows for active user list of posts containing information such as:
+In a few words: this is app which shows for user list of posts containing information such as:
 - date (how long ago),
 - name of publisher,
 - post text (with emoji, hashtags and mentioned user),
