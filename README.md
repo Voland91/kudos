@@ -19,6 +19,7 @@ To open at your computer clone this repo, type: npm install, then: npm start. Ej
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+
 Links:
 - React Router: https://github.com/ReactTraining/react-router
 - React Redux: https://github.com/reduxjs/react-redux
