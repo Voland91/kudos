@@ -32,5 +32,6 @@ Links:
 - React Responsive: https://github.com/contra/react-responsive
 - HTML React Parser: https://github.com/remarkablemark/html-react-parser
 - PropTypes: https://github.com/facebook/prop-types
+- ESLint: https://github.com/eslint/eslint
 - Atomic Design: https://bradfrost.com/blog/post/atomic-web-design/
 - Font Awesome: https://fontawesome.com/
