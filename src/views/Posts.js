@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Post from 'components/organisms/Post';
-import AddPost from 'components/organisms/AddPost';
+import AddPostForm from 'components/organisms/AddPostForm';
 import MainTemplate from 'templates/MainTemplate';
+import AddPostModal from 'views/AddPostModal';
 import { useMediaQuery } from 'react-responsive';
 
 const StyledPostsWrapper = styled.div`
@@ -24,7 +26,7 @@ const Posts = ({ posts, persons, kudoses }) => {
   return (
     <MainTemplate>
       <StyledPostsWrapper isMobile={isMobile}>
-        <AddPost persons={persons} />
+        <AddPostForm persons={persons} />
         {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, groupId }) => (
           <Post
             persons={persons}
@@ -42,6 +44,11 @@ const Posts = ({ posts, persons, kudoses }) => {
           />
         ))}
       </StyledPostsWrapper>
+      <Switch>
+        <Route path="/form">
+          <AddPostModal kudoses={kudoses} persons={persons} />
+        </Route>
+      </Switch>
     </MainTemplate>
   );
 };

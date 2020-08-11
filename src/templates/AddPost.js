@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
-import MainTemplate from 'templates/MainTemplate';
 import PropTypes from 'prop-types';
 import Form from 'components/organisms/Form';
 import { useMediaQuery } from 'react-responsive';
 
 const StyledFormsWrapper = styled.div`
+  /* position: absolute; */
   margin: 50px auto;
   width: ${({ theme }) => theme.width};
 
@@ -21,11 +21,9 @@ const Forms = ({ kudoses, persons }) => {
   const isMobile = useMediaQuery({ maxWidth: 664 });
 
   return (
-    <MainTemplate>
-      <StyledFormsWrapper isMobile={isMobile}>
-        <Form kudoses={kudoses} persons={persons} />
-      </StyledFormsWrapper>
-    </MainTemplate>
+    <StyledFormsWrapper isMobile={isMobile}>
+      <Form kudoses={kudoses} persons={persons} />
+    </StyledFormsWrapper>
   );
 };
 

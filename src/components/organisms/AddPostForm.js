@@ -23,7 +23,7 @@ const StyledWrapper = styled.button`
   }
 `;
 
-const AddPost = ({ persons }) => {
+const AddPostForm = ({ persons }) => {
   const activePerson = persons.find(person => person.isActive);
 
   return (
@@ -37,7 +37,7 @@ const AddPost = ({ persons }) => {
   );
 };
 
-AddPost.propTypes = {
+AddPostForm.propTypes = {
   persons: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -48,8 +48,8 @@ AddPost.propTypes = {
   ),
 };
 
-AddPost.defaultProps = {
+AddPostForm.defaultProps = {
   persons: {},
 };
 
-export default AddPost;
+export default AddPostForm;

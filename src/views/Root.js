@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import store from 'store';
 import MainTemplate from 'templates/MainTemplate';
 import Posts from 'views/Posts';
-import Forms from 'views/Forms';
 
 const Root = () => (
   <Provider store={store}>
@@ -12,7 +11,6 @@ const Root = () => (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={Posts} />
-          <Route path="/form" component={Forms} />
         </Switch>
       </BrowserRouter>
     </MainTemplate>
