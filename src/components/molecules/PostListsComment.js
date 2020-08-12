@@ -33,7 +33,7 @@ const Comment = ({ avatar }) => (
   <StyledBadgeWrapper>
     <Avatar small src={avatar} />
     <StyledRightWrapper>
-      <Input type="text" placeholder="Napisz komentarz..." />
+      <Input type="text" placeholder="Write a comment..." />
       <Icon comment src={gif} />
       <Icon comment src={emoticon} />
       <Icon comment src={clip} />

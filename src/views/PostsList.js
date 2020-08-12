@@ -4,8 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Post from 'components/organisms/Post';
-import AddPostForm from 'components/organisms/AddPostForm';
-import MainTemplate from 'templates/MainTemplate';
+import AddPostButton from 'components/molecules/AddPostButton';
 import AddPostModal from 'views/AddPostModal';
 import { useMediaQuery } from 'react-responsive';
 
@@ -24,9 +23,9 @@ const Posts = ({ posts, persons, kudoses }) => {
   const isMobile = useMediaQuery({ maxWidth: 664 });
 
   return (
-    <MainTemplate>
+    <>
       <StyledPostsWrapper isMobile={isMobile}>
-        <AddPostForm persons={persons} />
+        <AddPostButton persons={persons} />
         {sortedPosts.map(({ authorId, date, postId, description, heart, kudos, groupId }) => (
           <Post
             persons={persons}
@@ -45,11 +44,11 @@ const Posts = ({ posts, persons, kudoses }) => {
         ))}
       </StyledPostsWrapper>
       <Switch>
-        <Route path="/form">
+        <Route path="/home/form">
           <AddPostModal kudoses={kudoses} persons={persons} />
         </Route>
       </Switch>
-    </MainTemplate>
+    </>
   );
 };
 

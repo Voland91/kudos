@@ -27,10 +27,10 @@ const AddPostForm = ({ persons }) => {
   const activePerson = persons.find(person => person.isActive);
 
   return (
-    <Link to="/form">
+    <Link to="home/form">
       <StyledWrapper>
         <Avatar src={activePerson.avatar} />
-        <Text addPost>Kliknij, aby dodać post</Text>
+        <Text addPost>Click here to add a new post</Text>
         <Icon addPost src={icon} />
       </StyledWrapper>
     </Link>

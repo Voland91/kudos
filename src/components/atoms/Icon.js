@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 const Icon = styled.img`
-  background-color: ${({ theme }) => theme.grayborder};
   height: 24px;
   width: 24px;
   padding: 3px;
@@ -12,7 +11,6 @@ const Icon = styled.img`
   ${props =>
     props.big &&
     css`
-      background-color: transparent;
       height: 100px;
       width: 124px;
       padding: 0;
@@ -22,7 +20,6 @@ const Icon = styled.img`
   ${props =>
     props.small &&
     css`
-      background-color: transparent;
       height: 14px;
       width: 14px;
       padding: 1px;
@@ -32,15 +29,8 @@ const Icon = styled.img`
   ${props =>
     props.comment &&
     css`
-      background-color: transparent;
       padding: 5px;
       border-radius: 0;
-    `};
-
-  ${props =>
-    props.addPost &&
-    css`
-      background-color: transparent;
     `};
 
   ${props =>
@@ -55,7 +45,6 @@ const Icon = styled.img`
       max-width: 75px;
       width: auto;
       height: auto;
-      background-color: transparent;
     `};
 `;
 

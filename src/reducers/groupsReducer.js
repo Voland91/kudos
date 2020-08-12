@@ -1,7 +1,7 @@
 const initialState = [
   {
     id: 1,
-    name: 'Białystok',
+    name: 'London',
     img:
       'https://raw.githubusercontent.com/Voland91/kudos/8ced9adf1248ebe4ade05742e5ef563e17d13209/src/assets/icons/city-purple.svg',
   },
@@ -13,7 +13,7 @@ const initialState = [
   },
   {
     id: 3,
-    name: 'Warszawa',
+    name: 'New York',
     img:
       'https://raw.githubusercontent.com/Voland91/kudos/8ced9adf1248ebe4ade05742e5ef563e17d13209/src/assets/icons/city-purple.svg',
   },

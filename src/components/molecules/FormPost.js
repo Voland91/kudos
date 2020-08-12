@@ -14,7 +14,7 @@ const StyledEditorWrapper = styled.div`
 
 const FormPost = ({ persons, onChange }) => (
   <>
-    <Text formlook>Treść posta nad kudosem</Text>
+    <Text formlook>Description</Text>
     <StyledEditorWrapper>
       <TextInput persons={persons} onChange={onChange} />
     </StyledEditorWrapper>

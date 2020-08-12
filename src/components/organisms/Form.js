@@ -44,9 +44,9 @@ class Form extends React.Component {
   };
 
   errorMessages = {
-    personIncorrect: 'Musisz wybrać osobę',
-    kudosIncorrect: 'Musisz wybrać kudos',
-    groupIncorrect: 'Musi wybrać grupę',
+    personIncorrect: 'You must choose a person',
+    kudosIncorrect: 'You must choose a kudos',
+    groupIncorrect: 'You must select a group',
   };
 
   handleChange = e => {
@@ -140,12 +140,12 @@ class Form extends React.Component {
         <FormWrapper autocomplete="off" onSubmit={this.handleSubmit}>
           <FormHeader />
           <FormPost persons={persons} onChange={this.handlePostChange} />
-          <Text formlook>Wybierz osobę, której przyznajesz kudos</Text>
+          <Text formlook>Choose a person</Text>
           <FormChosePerson persons={persons} onChange={this.handlePersonChange} />
           {errors.person && (
             <ValidationMessage>{this.errorMessages.personIncorrect}</ValidationMessage>
           )}
-          <Text formlook>Wybierz kudos</Text>
+          <Text formlook>Choose a kudos</Text>
           {kudoses.map(({ title, description, img, id }) => (
             <FormAddKudos
               title={title}
@@ -159,10 +159,10 @@ class Form extends React.Component {
           {errors.kudos && (
             <ValidationMessage>{this.errorMessages.kudosIncorrect}</ValidationMessage>
           )}
-          <Text formlook>Wybierz grupę</Text>
+          <Text formlook>Select a group</Text>
           <StyledNavWrapper>
             <FormChoseGroup onChange={this.handleGroupChange} />
-            <Button>Opublikuj</Button>
+            <Button>Publish!</Button>
           </StyledNavWrapper>
           {errors.group && (
             <ValidationMessage>{this.errorMessages.groupIncorrect}</ValidationMessage>

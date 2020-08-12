@@ -6,7 +6,6 @@ import Form from 'components/organisms/Form';
 import { useMediaQuery } from 'react-responsive';
 
 const StyledFormsWrapper = styled.div`
-  /* position: absolute; */
   margin: 50px auto;
   width: ${({ theme }) => theme.width};
 
@@ -21,7 +20,7 @@ const Forms = ({ kudoses, persons }) => {
   const isMobile = useMediaQuery({ maxWidth: 664 });
 
   return (
-    <StyledFormsWrapper isMobile={isMobile}>
+    <StyledFormsWrapper isMobile={isMobile} onClick={e => e.stopPropagation()}>
       <Form kudoses={kudoses} persons={persons} />
     </StyledFormsWrapper>
   );
